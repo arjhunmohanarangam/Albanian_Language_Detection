@@ -7,7 +7,15 @@ from sklearn import linear_model
 from sklearn import pipeline
 from sklearn import metrics
 import pickle
-
+"""
+1.Converting the given data in txt file to Pandas DataFrame.
+2.Seperating the languages
+3.Storing the punctuations and creating empty list to store cleaned data.
+4. Cleaning the data and appending to the list.
+cleaning the data consist of  changing the characters to lower case, removing numbers and punctuations
+5. Creating a DataFrame with those list.
+6. shuffle the data.
+ """
 df = pd.read_csv('sqi.txt', sep="\t", header=None, names=["English", "Albanian", "cite"])
 #print(df)
 Eng_df=df[["English"]]
@@ -39,6 +47,14 @@ df=pd.DataFrame({"Text":data_En+data_Alb,
                    "Lang":lang_En+lang_Alb})
 df=df.sample(frac=1)
 #print(df)
+"""
+1.Storing text in x and language in y.
+2. Creating train and test data for test size of 0.2.  The accuracy of the output is less when taken less than or more then 20%.
+3.Vector method TfidfVectorizer is used with ngram of 3 and analyzer is with character. But also tried using word the accuracy is less.
+4.determin the pipeline with classifier as LogisticRegression
+(Refer:https://towardsdatascience.com/understanding-logistic-regression-9b02c2aec102) for the reason.
+5. Fit the model and predict the accuracy.
+6.store the model using pickle"""
 x,y=df.iloc[:,0],df.iloc[:,1]
 x_train, x_test, y_train, y_test=train_test_split(x,y,test_size=0.2,random_state=0)
 #print(x_train.shape)
