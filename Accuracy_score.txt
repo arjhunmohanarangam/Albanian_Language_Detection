@@ -1,0 +1,6 @@
+[Command: python3 -u /Users/arjhunmohanarangam/Documents/GitHub/Albanian_Language_Detection/Prediction.py]
+100.0 %
+confusion matrix:
+  [[95  0]
+ [ 0 85]]
+[Finished in 2.628s]
